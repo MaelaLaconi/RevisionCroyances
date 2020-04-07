@@ -9,4 +9,11 @@ public class Et extends FormuleBinaire {
     public String toString() {
         return "(" + oper1 + " ∧ " + oper2 + ")";
     }
+
+    @Override
+    public void toFND(){
+        oper1.toFND() ;
+        oper2.toFND();
+    }
+
 }

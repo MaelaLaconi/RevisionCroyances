@@ -7,9 +7,7 @@ public class FormuleUnaire extends Formule {
         super(oper);
         this.oper = oper;
     }
-    public FormuleUnaire(String oper) {
-        super(oper);
-    }
+
 
 
 }

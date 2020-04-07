@@ -7,6 +7,6 @@ public class Non extends FormuleUnaire {
 
     @Override
     public String toString() {
-        return "¬("+oper+")";
+        return "¬"+oper;
     }
 }

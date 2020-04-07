@@ -1,8 +1,11 @@
 package Moteur;
 
+import java.util.ArrayList;
+
 public abstract class Formule {
     protected Formule formuleUnaire ;
-    protected String contrainte;
+    protected ArrayList<Variable> contrainte;
+    protected double valeur ;
     protected Formule formuleUnaire2 ;
 
     public Formule(Formule formuleUnaire) {
@@ -14,16 +17,11 @@ public abstract class Formule {
         this.formuleUnaire2 = formuleUnaire2 ;
     }
 
-    public Formule(String contrainte) {
+    public Formule(ArrayList<Variable> contrainte, double valeur) {
         this.contrainte = contrainte;
+        this.valeur = valeur ;
     }
 
-    @Override
-    public String toString() {
-        return "Formule{" +
-                "formuleUnaire=" + formuleUnaire +
-                ", var='" + contrainte + '\'' +
-                ", formuleUnaire2=" + formuleUnaire2 +
-                '}';
-    }
+    public void toFND(){}
+
 }
