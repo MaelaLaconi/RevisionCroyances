@@ -1,6 +1,6 @@
 package Moteur;
 
-public class FormuleBinaire extends Formule {
+public abstract class FormuleBinaire extends Formule {
     protected Formule oper1 ;
     protected Formule oper2 ;
 

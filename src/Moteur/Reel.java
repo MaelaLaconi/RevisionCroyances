@@ -1,12 +1,20 @@
 package Moteur;
 
+import java.util.ArrayList;
+
 public class Reel extends Variable {
-    public Reel(double n) {
-        super(n);
+
+    public Reel(String nom) {
+        super(nom);
     }
 
     @Override
-    public String toString() {
-        return String.valueOf(reel);
+    public boolean satisfait(ArrayList<Variable> listX) {
+        return true ;
+    }
+
+    @Override
+    public double toDouble(){
+        return Double.valueOf(nom) ;
     }
 }

@@ -7,6 +7,7 @@ public abstract class Formule {
     protected ArrayList<Variable> contrainte;
     protected double valeur ;
     protected Formule formuleUnaire2 ;
+    protected String nom ;
 
     public Formule(Formule formuleUnaire) {
         this.formuleUnaire = formuleUnaire;
@@ -22,6 +23,11 @@ public abstract class Formule {
         this.valeur = valeur ;
     }
 
-    public void toFND(){}
+    public Formule(String nom) {
+        this.nom = nom ;
+    }
 
+   // public abstract Formule toDNF();
+
+    public abstract boolean satisfait(ArrayList<Variable> listX) ;
 }

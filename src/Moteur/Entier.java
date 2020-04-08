@@ -1,12 +1,20 @@
 package Moteur;
 
+import java.util.ArrayList;
+
 public class Entier extends Variable {
-    public Entier(int n) {
-        super(n);
+
+    public Entier(String nom) {
+        super(nom);
     }
 
     @Override
-    public String toString() {
-        return String.valueOf(entier);
+    public boolean satisfait(ArrayList<Variable> listX) {
+        return true;
+    }
+
+    @Override
+    public int toInt(){
+        return Integer.valueOf(nom) ;
     }
 }

@@ -20,4 +20,15 @@ public class Contrainte extends FormuleArite0{
         res.append(" ≤ "+valeur+")") ;
         return res.toString() ;
     }
+
+    @Override
+    public boolean satisfait(ArrayList<Variable> listX) {
+        double res = list.get(0).toDouble() + listX.get(0).toDouble();
+        int i ;
+
+        for(i=1; i<list.size(); i++){
+            res += list.get(i).toDouble() + listX.get(i).toDouble();
+        }
+        return (res <=valeur);
+    }
 }
