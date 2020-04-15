@@ -11,6 +11,8 @@ public class Main {
         arrayList.add(e);
        // arrayList.add(r) ;
         Contrainte c1 = new Contrainte(arrayList, 6) ;
+        Contrainte c2 = new Contrainte(arrayList, 10) ;
+
         System.out.println(c1);
 
 
@@ -54,6 +56,38 @@ public class Main {
         ou = new Ou(non, c1);
         System.out.println(ou);
         System.out.println(i.satisfait(ou));
+
+        et = new Et(c1, c1) ;
+        non = new Non(et) ;
+
+        Formule phi2 = non.toNNF() ;
+        System.out.println("**********************************************\n"+non);
+        System.out.println(phi2);
+
+        phi2 = c1.toNNF() ;
+        System.out.println("**********************************************\n"+c1);
+        System.out.println(phi2);
+
+        phi2 = et.toNNF() ;
+        System.out.println("**********************************************\n"+et);
+        System.out.println(phi2);
+        et = new Et(c1, c2);
+        ou = new Ou(et,c2) ;
+        non = new Non(ou) ;
+
+        phi2 = non.toNNF() ;
+        System.out.println("**********************************************\n"+non);
+        System.out.println(phi2);
+
+        et = new Et(c1, new Non(c2));
+        phi2 = et.toNNF() ;
+        System.out.println("**********************************************\n"+et);
+        System.out.println(phi2);
+
+        non = new Non(c1) ;
+        phi2 = non.toNNF() ;
+        System.out.println("**********************************************\n"+non);
+        System.out.println(phi2);
 
     }
 }

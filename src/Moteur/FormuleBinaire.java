@@ -9,4 +9,12 @@ public abstract class FormuleBinaire extends Formule {
         this.oper1 = oper1;
         this.oper2 = oper2;
     }
+
+    public Formule getOper1() {
+        return oper1;
+    }
+
+    public Formule getOper2() {
+        return oper2;
+    }
 }

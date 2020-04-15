@@ -22,6 +22,11 @@ public class Contrainte extends FormuleArite0{
     }
 
     @Override
+    public Formule toNNF() {
+        return this;
+    }
+
+    @Override
     public boolean satisfait(ArrayList<Variable> listX) {
         double res = list.get(0).toDouble() + listX.get(0).toDouble();
         int i ;
@@ -30,5 +35,10 @@ public class Contrainte extends FormuleArite0{
             res += list.get(i).toDouble() + listX.get(i).toDouble();
         }
         return (res <=valeur);
+    }
+
+    @Override
+    public boolean isContrainte() {
+        return true;
     }
 }

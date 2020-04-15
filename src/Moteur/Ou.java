@@ -7,6 +7,20 @@ public class Ou extends FormuleBinaire {
         super(oper1, oper2);
     }
 
+    @Override
+    public Formule toNNF() {
+        return new Ou(oper1.toNNF(), oper2.toNNF());
+    }
+
+    @Override
+    public Formule toSousNNF() {
+        return new Et(new Non(oper1).toNNF(), new Non(oper2).toNNF());
+    }
+
+    @Override
+    public boolean isOu(){
+        return true ;
+    }
     /*@Override
     public Formule toDNF() {
         return this ;

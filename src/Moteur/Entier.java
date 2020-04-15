@@ -9,6 +9,11 @@ public class Entier extends Variable {
     }
 
     @Override
+    public Formule toNNF() {
+        return this;
+    }
+
+    @Override
     public boolean satisfait(ArrayList<Variable> listX) {
         return true;
     }
