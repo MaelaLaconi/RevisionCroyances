@@ -65,7 +65,7 @@ public class Et extends FormuleBinaire {
             Et et2 = new Et(oper1.getOper1(), oper2.getOper2()) ;
             Et et3 = new Et(oper1.getOper2(), oper2.getOper1()) ;
             Et et4 = new Et(oper1.getOper2(), oper2.getOper2()) ;
-            return new Ou(new Ou(et1, et2), new Ou(et3, et4)) ;
+            return new Ou(new Ou(et1.toDNF(), et2.toDNF()), new Ou(et3.toDNF(), et4.toDNF())) ;
         }
 
 
