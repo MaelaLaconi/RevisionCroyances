@@ -35,4 +35,10 @@ public class Ou extends FormuleBinaire {
     public String toString() {
         return "("+oper1+" ∨ "+oper2+")";
     }
+
+    public Formule toDNF() {
+        return new Ou(oper1.toDNF(), oper2.toDNF()) ;
+    }
+
+
 }

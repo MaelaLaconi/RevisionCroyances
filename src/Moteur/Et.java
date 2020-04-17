@@ -28,15 +28,50 @@ public class Et extends FormuleBinaire {
     }
 
 
-
     @Override
     public boolean satisfait(ArrayList<Variable> listX) {
-        return (oper1.satisfait(listX) && oper2.satisfait(listX)) ;
+        return (oper1.satisfait(listX) && oper2.satisfait(listX));
     }
 
     @Override
-    public boolean isEt(){
-        return true ;
+    public boolean isEt() {
+        return true;
     }
 
-}
+    public Formule toDNF() {
+        if (oper1.isContrainte() && oper2.isContrainte()) {
+            return this;
+        }
+
+       /* if (oper1.isEt() && oper2.isEt()){
+            return new Et(oper1.toDNF(), oper2.toDNF()).toDNF() ;
+        }
+        if (oper1.isContrainte() && oper2.isEt()) {
+            return new Et(oper1, oper2.toDNF()).toDNF();
+        }
+        if (oper2.isContrainte() && oper1.isEt()) {
+            return new Et(oper1.toDNF(), oper2).toDNF();
+        }*/
+        if (oper1.isContrainte() && oper2.isOu()) {
+            return new Ou(new Et(oper1, oper2.getOper1()), new Et(oper1, oper2.getOper2()));
+        }
+
+        if (oper2.isContrainte() && oper1.isOu()) {
+            return new Ou(new Et(oper1.getOper1(), oper2), new Et(oper1.getOper2(), oper2));
+        }
+
+        if(oper1.isOu() && oper2.isOu()){
+            Et et1 = new Et(oper1.getOper1(), oper2.getOper1()) ;
+            Et et2 = new Et(oper1.getOper1(), oper2.getOper2()) ;
+            Et et3 = new Et(oper1.getOper2(), oper2.getOper1()) ;
+            Et et4 = new Et(oper1.getOper2(), oper2.getOper2()) ;
+            return new Ou(new Ou(et1, et2), new Ou(et3, et4)) ;
+        }
+
+
+        return new Et(oper1.toDNF(), oper2.toDNF()) ;
+
+    }
+
+
+    }

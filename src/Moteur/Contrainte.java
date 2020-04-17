@@ -41,4 +41,9 @@ public class Contrainte extends FormuleArite0{
     public boolean isContrainte() {
         return true;
     }
+
+    public Formule toDNF() {
+        return this ;
+    }
+
 }

@@ -89,5 +89,14 @@ public class Main {
         System.out.println("**********************************************\n"+non);
         System.out.println(phi2);
 
+        et = new Et(c1, new Ou(c1,c2));
+
+        phi2 = et.toDNF() ;
+        System.out.println("**********************************************\n"+et);
+        System.out.println(phi2);
+        /*
+        dnf
+        ou de et
+         */
     }
 }

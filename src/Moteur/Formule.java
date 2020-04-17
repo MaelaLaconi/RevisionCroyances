@@ -34,7 +34,12 @@ public abstract class Formule {
      * @return
      */
     public abstract Formule toNNF() ;
+
     public  Formule toSousNNF(){
+        return this ;
+    }
+
+    public Formule toDNF(){
         return this ;
     }
     public abstract boolean satisfait(ArrayList<Variable> listX) ;
@@ -46,6 +51,14 @@ public abstract class Formule {
     public boolean isNon(){return false;}
     public boolean estContrainteNon(){
         return false ;
+    }
+
+    public Formule getOper1() {
+        return formuleUnaire;
+    }
+
+    public Formule getOper2() {
+        return formuleUnaire2;
     }
 
 }
