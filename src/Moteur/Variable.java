@@ -1,26 +1,41 @@
 package Moteur;
 
-public abstract class Variable extends  FormuleArite0{
 
+import java.util.Objects;
 
-    public Variable(String nom) {
-        super(nom);
+//n'extends pas
+public abstract class Variable{
+    protected String name ;
+    //regarder super methode pour name, et equals type sdans entier ou reel
+    public Variable(String name) {
+        this.name = name;
     }
 
-   /* protected Variable(int n) {
-        this.entier = n;
-    }
-    protected Variable(double n) {
-        this.reel = n;
-    }*/
 
     public double toDouble(){
-        return Double.valueOf(nom) ;
+        return Double.valueOf(name) ;
     }
 
 
-    public int toInt(){
-        return Integer.valueOf(nom) ;
+
+    @Override
+    public String toString() {
+        return name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Variable variable = (Variable) o;
+        return Objects.equals(name, variable.name);
+    }
+
+
+
+    //equals meme nom et meme type reel ou entier
 }

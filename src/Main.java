@@ -5,98 +5,101 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Variable r = new Reel("1.5") ;
-        Variable e = new Entier("1") ;
-        ArrayList<Variable> arrayList = new ArrayList();
-        arrayList.add(e);
-       // arrayList.add(r) ;
-        Contrainte c1 = new Contrainte(arrayList, 6) ;
-        Contrainte c2 = new Contrainte(arrayList, 10) ;
+        Variable r = new RealVariable("r") ;
+        Variable e = new IntegerVariable("e") ;
+        Coefficients coefficients = new Coefficients() ;
+        coefficients.put(r, 7.);
+        coefficients.put(e, 2.);
+
+        Constraint c1 = new Constraint(coefficients, 7) ;
+        Constraint c2 = new Constraint(coefficients, 10) ;
 
         System.out.println(c1);
 
 
-        Et et = new Et(c1, c1) ;
-        System.out.println(et);
+        And and = new And(c1, c1) ;
+        System.out.println(and);
 
-        Non non = new Non(c1) ;
-        System.out.println(non);
+        Not not = new Not(c1) ;
+        System.out.println(not);
 
-        Ou ou = new Ou(et,c1) ;
-        System.out.println(ou);
+        Or or = new Or(and,c1) ;
+        System.out.println(or);
 
-        Formule phi = new Non(ou) ;
+        Formule phi = new Not(or) ;
         System.out.println(phi);
 
 
 
-        r = new Reel("10") ;
+       // r = new RealVariable("x1") ;
        // e = new Entier("1") ;
-        ArrayList<Variable> listX = new ArrayList();
-        listX.add(r) ;
-       // listX.add(e) ;
-        Interpretation i = new Interpretation(listX) ;
-        System.out.println(i.satisfait(c1));
+        Interpretation i = new Interpretation() ;
+        i.put(r, 1.);
+        i.put(e, 0.);
+        System.out.println("c1 = "+c1 +"\n"+i.satisfait(c1));
 
-        et = new Et(c1, c1) ;
-        System.out.println(i.satisfait(et));
+        and = new And(c1, c1) ;
+        System.out.println("************************************");
+        System.out.println(and);
+        System.out.println(i.satisfait(and));
 
-        non = new Non(et) ;
-        System.out.println(non);
-        System.out.println(i.satisfait(non));
+        not = new Not(and) ;
+        System.out.println("************************************");
+        System.out.println(not);
+        System.out.println(i.satisfait(not));
 
-        non = new Non(c1) ;
-        System.out.println(non);
-        System.out.println(i.satisfait(non));
+        /*not = new Not(c1) ;
+        System.out.println(not);
+        System.out.println(i.satisfait(not));
 
-        et = new Et(non, c1) ;
-        System.out.println(et);
-        System.out.println(i.satisfait(et));
+        and = new And(not, c1) ;
+        System.out.println(and);
+        System.out.println(i.satisfait(and));
 
-        ou = new Ou(non, c1);
-        System.out.println(ou);
-        System.out.println(i.satisfait(ou));
+        or = new Or(not, c1);
+        System.out.println(or);
+        System.out.println(i.satisfait(or));
 
-        et = new Et(c1, c1) ;
-        non = new Non(et) ;
+        and = new And(c1, c1) ;
+        not = new Not(and) ;
 
-        Formule phi2 = non.toNNF() ;
-        System.out.println("**********************************************\n"+non);
+        Formule phi2 = not.toNNF() ;
+        System.out.println("**********************************************\n"+ not);
         System.out.println(phi2);
 
         phi2 = c1.toNNF() ;
         System.out.println("**********************************************\n"+c1);
         System.out.println(phi2);
 
-        phi2 = et.toNNF() ;
-        System.out.println("**********************************************\n"+et);
+        phi2 = and.toNNF() ;
+        System.out.println("**********************************************\n"+ and);
         System.out.println(phi2);
-        et = new Et(c1, c2);
-        ou = new Ou(et,c2) ;
-        non = new Non(ou) ;
+        and = new And(c1, c2);
+        or = new Or(and,c2) ;
+        not = new Not(or) ;
 
-        phi2 = non.toNNF() ;
-        System.out.println("**********************************************\n"+non);
-        System.out.println(phi2);
-
-        et = new Et(c1, new Non(c2));
-        phi2 = et.toNNF() ;
-        System.out.println("**********************************************\n"+et);
+        phi2 = not.toNNF() ;
+        System.out.println("**********************************************\n"+ not);
         System.out.println(phi2);
 
-        non = new Non(c1) ;
-        phi2 = non.toNNF() ;
-        System.out.println("**********************************************\n"+non);
+        and = new And(c1, new Not(c2));
+        phi2 = and.toNNF() ;
+        System.out.println("**********************************************\n"+ and);
         System.out.println(phi2);
 
-        et = new Et(c1, new Ou(c1,c2));
-
-        phi2 = et.toDNF() ;
-        System.out.println("**********************************************\n"+et);
+        not = new Not(c1) ;
+        phi2 = not.toNNF() ;
+        System.out.println("**********************************************\n"+ not);
         System.out.println(phi2);
-        /*
-        dnf
-        ou de et
-         */
+
+        and = new And(c1, new Or(c1,c2));
+        phi2 = and.toDNF() ;
+        System.out.println("**********************************************\n"+ and);
+        System.out.println(phi2);
+
+        and = new And(c1, new And(c1,new Or(c1, c2)));
+        phi2 = and.toDNF() ;
+        System.out.println("**********************************************\n"+ and);
+        System.out.println(phi2);*/
     }
 }

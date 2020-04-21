@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Formule {
     protected Formule formuleUnaire ;
-    protected ArrayList<Variable> contrainte;
+    protected Coefficients coefficients ;
     protected double valeur ;
     protected Formule formuleUnaire2 ;
     protected String nom ;
@@ -18,8 +18,8 @@ public abstract class Formule {
         this.formuleUnaire2 = formuleUnaire2 ;
     }
 
-    public Formule(ArrayList<Variable> contrainte, double valeur) {
-        this.contrainte = contrainte;
+    public Formule(Coefficients coefficients, double valeur) {
+        this.coefficients = coefficients;
         this.valeur = valeur ;
     }
 
@@ -42,7 +42,7 @@ public abstract class Formule {
     public Formule toDNF(){
         return this ;
     }
-    public abstract boolean satisfait(ArrayList<Variable> listX) ;
+    public abstract boolean estSatisfaitePar(Interpretation inter, Variables variables) ;
 
     public boolean isContrainte(){return false;}
     public boolean isOu(){return false;}
@@ -61,4 +61,6 @@ public abstract class Formule {
         return formuleUnaire2;
     }
 
+
+    public abstract Variables getVariables() ;
 }

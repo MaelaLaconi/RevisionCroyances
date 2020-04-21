@@ -2,13 +2,13 @@ package Moteur;
 
 import java.util.ArrayList;
 
-public class Interpretation {
+public class Interpretation extends VariableValueTable {
     protected ArrayList<Variable> listX ;
-    public Interpretation(ArrayList<Variable> listX) {
-        this.listX = listX ;
+    public Interpretation() {
     }
 
     public boolean satisfait(Formule formule){
-        return formule.satisfait(listX) ;
+        System.out.printf("varibles : " + formule.getVariables());
+        return formule.estSatisfaitePar(this, formule.getVariables()) ;
     }
 }
