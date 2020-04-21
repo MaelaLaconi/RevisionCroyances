@@ -33,30 +33,31 @@ public class Main {
 
        // r = new RealVariable("x1") ;
        // e = new Entier("1") ;
-        Interpretation i = new Interpretation() ;
-        i.put(r, 1.);
-        i.put(e, 0.);
-        System.out.println("c1 = "+c1 +"\n"+i.satisfait(c1));
+        Interpretation interp = new Interpretation() ;
+        interp.put(r, 1.);
+        interp.put(e, 0.);
+        System.out.println("c1 = "+c1 +"\n"+interp.satisfait(c1));
 
         and = new And(c1, c1) ;
         System.out.println("************************************");
         System.out.println(and);
-        System.out.println(i.satisfait(and));
+        System.out.println(interp.satisfait(and));
 
         not = new Not(and) ;
         System.out.println("************************************");
         System.out.println(not);
-        System.out.println(i.satisfait(not));
+        System.out.println(interp.satisfait(not));
 
-        /*not = new Not(c1) ;
+       /* not = new Not(c1) ;
+        System.out.println("************************************");
         System.out.println(not);
-        System.out.println(i.satisfait(not));
+        System.out.println(interp.satisfait(not));
 
         and = new And(not, c1) ;
         System.out.println(and);
-        System.out.println(i.satisfait(and));
+        System.out.println(interp.satisfait(and));
 
-        or = new Or(not, c1);
+   /*     or = new Or(not, c1);
         System.out.println(or);
         System.out.println(i.satisfait(or));
 

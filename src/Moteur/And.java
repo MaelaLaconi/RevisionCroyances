@@ -76,7 +76,7 @@ public class And extends FormuleBinaire {
         }
 
 
-        return new And(oper1.toDNF(), oper2.toDNF()).toDNF() ;
+        return new And(oper1.toDNF(), oper2.toDNF()) ;
 
     }
 
