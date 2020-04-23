@@ -5,9 +5,9 @@ public class Interpretation extends VariableValueTable {
     }
 
     public boolean satisfait(Formule formule){
-        Formule phi = formule.toNNF() ;
+       /* Formule phi = formule.toNNF() ;
         phi = phi.toDNF();
-        System.out.println("apres dnf : "+phi);
-        return phi.estSatisfaitePar(this, phi.getVariables()) ;
+        System.out.println("apres dnf : "+phi);*/
+        return formule.estSatisfaitePar(this, formule.getVariables()) ;
     }
 }

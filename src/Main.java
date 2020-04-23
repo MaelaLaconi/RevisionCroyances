@@ -11,7 +11,7 @@ public class Main {
         coefficients.put(r, 7.);
         coefficients.put(e, 2.);
 
-        Constraint c1 = new Constraint(coefficients, 7) ;
+        Constraint c1 = new Constraint(coefficients, 6) ;
         Constraint c2 = new Constraint(coefficients, 10) ;
 
         System.out.println(c1);
@@ -48,11 +48,16 @@ public class Main {
         System.out.println(not);
         System.out.println(interp.satisfait(not));
 
-       /* not = new Not(c1) ;
+        Not not1 = new Not(not) ;
         System.out.println("************************************");
-        System.out.println(not);
-        System.out.println(interp.satisfait(not));
+        System.out.println(not1);
+        System.out.println(interp.satisfait(not1));
 
+        and = new And(c1, c2) ;
+        System.out.println("************************************");
+        System.out.println(and);
+        System.out.println(interp.satisfait(and));
+/*
         and = new And(not, c1) ;
         System.out.println(and);
         System.out.println(interp.satisfait(and));
