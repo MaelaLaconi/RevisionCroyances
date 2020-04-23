@@ -25,6 +25,7 @@ public class VariableValueTable {
             res.append(me.getValue()+"*"+me.getKey()+"+") ;
         }
 
+        //remove the last +
         String str = res.toString();
         str = str.substring(0, str.length() - 1);
         return str ;

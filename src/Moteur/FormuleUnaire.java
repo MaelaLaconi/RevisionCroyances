@@ -1,13 +1,20 @@
 package Moteur;
 
-public abstract class FormuleUnaire extends Formule {
-    protected Formule oper ;
+import java.util.Objects;
 
-    public FormuleUnaire(Formule oper) {
-        super(oper);
-        this.oper = oper;
+public abstract class FormuleUnaire extends Formule {
+    protected Formule child ;
+
+    public FormuleUnaire(Formule child) {
+        super(child);
+        this.child = child;
     }
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FormuleUnaire that = (FormuleUnaire) o;
+        return Objects.equals(child, that.child);
+    }
 }

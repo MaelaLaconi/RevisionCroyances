@@ -7,16 +7,10 @@ public class RealVariable extends Variable {
 
     public RealVariable(String name) {
         super(name);
+        isReal = true ;
     }
 
 
-
-
-
-    @Override
-    public double toDouble(){
-        return Double.valueOf(name) ;
-    }
 
 //just equals avec les types
 }

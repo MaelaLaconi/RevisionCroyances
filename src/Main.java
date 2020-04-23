@@ -13,6 +13,8 @@ public class Main {
 
         Constraint c1 = new Constraint(coefficients, 6) ;
         Constraint c2 = new Constraint(coefficients, 10) ;
+        Constraint c3 = new Constraint(coefficients, 15) ;
+        Constraint c4 = new Constraint(coefficients, 17) ;
 
         System.out.println(c1);
 
@@ -57,6 +59,85 @@ public class Main {
         System.out.println("************************************");
         System.out.println(and);
         System.out.println(interp.satisfait(and));
+
+        System.out.println("DNF************************************");
+        System.out.println(and);
+        System.out.println(and.toNNF());
+        System.out.println(and.toDNF());
+
+        System.out.println("************************************");
+        not = new Not(and) ;
+        System.out.println(not);
+        System.out.println(not.toNNF());
+        phi = not.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        or = new Or(c1, c2) ;
+        System.out.println(or);
+        System.out.println(or.toNNF());
+        phi = or.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        not = new Not(or) ;
+        System.out.println(not);
+        System.out.println(not.toNNF());
+        phi = not.toNNF();
+        System.out.println(phi.toDNF());
+
+
+        System.out.println("************************************");
+        or = new Or(c1, and) ;
+        System.out.println(or);
+        System.out.println(or.toNNF());
+        phi = or.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        not = new Not(or) ;
+        System.out.println(not);
+        System.out.println(not.toNNF());
+        phi = not.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        Or or1 = new Or(c2, c3) ;
+        or = new Or(c1, c4) ;
+
+        and = new And(or, or1) ;
+        System.out.println(and);
+        System.out.println(and.toNNF());
+        phi = and.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        and = new And(or1, c1) ;
+        System.out.println(and);
+        System.out.println(and.toNNF());
+        phi = and.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        Or or3 = new Or(or, or1) ;
+        System.out.println(or3);
+        System.out.println(or3.toNNF());
+        phi = or3.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        and = new And(new And(c1, c2), new And(c3, c4)) ;
+        System.out.println(and);
+        System.out.println(and.toNNF());
+        phi = and.toNNF();
+        System.out.println(phi.toDNF());
+
+        System.out.println("************************************");
+        or = new Or(c1, new And(c2, new Or(c3, c4))) ;
+        System.out.println(or);
+        System.out.println(or.toNNF());
+        phi = or.toNNF();
+        System.out.println(phi.toDNF());
 /*
         and = new And(not, c1) ;
         System.out.println(and);

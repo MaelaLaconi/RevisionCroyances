@@ -1,7 +1,5 @@
 package Moteur;
 
-import java.util.ArrayList;
-
 public class Not extends FormuleUnaire {
     public Not(Formule oper) {
         super(oper);
@@ -9,21 +7,21 @@ public class Not extends FormuleUnaire {
 
     @Override
     public Formule toNNF() {
-        if (oper.isContrainte()) {
+        if (child.isContrainte()) {
             return this;
         } else {
-            return oper.toSousNNF();
+            return child.toSousNNF();
         }
     }
 
     @Override
     public boolean estContrainteNon() {
-        return oper.isContrainte();
+        return child.isContrainte();
     }
 
     @Override
     public Variables getVariables() {
-        return oper.getVariables();
+        return child.getVariables();
     }
   /*  @Override
     public Formule toDNF() {
@@ -37,7 +35,7 @@ public class Not extends FormuleUnaire {
 
     @Override
     public String toString() {
-        return "¬" + oper;
+        return "¬" + child;
     }
 
     @Override
@@ -51,6 +49,16 @@ public class Not extends FormuleUnaire {
 
     @Override
     public boolean estSatisfaitePar(Interpretation inter, Variables variables) {
-        return !oper.estSatisfaitePar(inter, variables);
+        return !child.estSatisfaitePar(inter, variables);
+    }
+
+
+    /**
+     * cas ou on a non d'une contrainte
+     * @return
+     */
+    @Override
+    public boolean isContrainte(){
+        return this.child.isContrainte();
     }
 }

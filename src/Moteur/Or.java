@@ -7,12 +7,12 @@ public class Or extends FormuleBinaire {
 
     @Override
     public Formule toNNF() {
-        return new Or(oper1.toNNF(), oper2.toNNF());
+        return new Or(leftChild.toNNF(), rightChild.toNNF());
     }
 
     @Override
     public Formule toSousNNF() {
-        return new And(new Not(oper1).toNNF(), new Not(oper2).toNNF());
+        return new And(new Not(leftChild).toNNF(), new Not(rightChild).toNNF());
     }
 
     @Override
@@ -22,22 +22,22 @@ public class Or extends FormuleBinaire {
 
     @Override
     public String toString() {
-        return "("+oper1+" ∨ "+oper2+")";
+        return "("+ leftChild +" ∨ "+ rightChild +")";
     }
 
     public Formule toDNF() {
-        return new Or(oper1.toDNF(), oper2.toDNF()) ;
+        return new Or(leftChild.toDNF(), rightChild.toDNF()) ;
     }
 
     @Override
     public boolean estSatisfaitePar(Interpretation inter, Variables variables) {
-        return (oper1.estSatisfaitePar(inter, variables) || oper2.estSatisfaitePar(inter, variables)) ;
+        return (leftChild.estSatisfaitePar(inter, variables) || rightChild.estSatisfaitePar(inter, variables)) ;
     }
 
     @Override
     public Variables getVariables() {
-        Variables variables1 = oper1.getVariables() ;
-        Variables variables2 = oper2.getVariables() ;
+        Variables variables1 = leftChild.getVariables() ;
+        Variables variables2 = rightChild.getVariables() ;
         return variables1.union(variables2);
     }
 

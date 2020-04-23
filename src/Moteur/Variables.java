@@ -2,13 +2,10 @@ package Moteur;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Variables implements Iterable {
     protected ArrayList<Variable> variables ;
-    public Variables(ArrayList<Variable> variables) {
-        this.variables = variables ;
-    }
-
     public Variables() {
         this.variables = new ArrayList<Variable>() ;
     }
@@ -32,14 +29,21 @@ public class Variables implements Iterable {
         return var ;
     }
 
-    @Override
-    public String toString() {
-        return "Variables{" +
-                "variables=" + variables +
-                '}';
-    }
-
     public boolean contains(Variable var){
         return variables.contains(var) ;
     }
+
+    @Override
+    public String toString() {
+        return "variables=" + variables ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Variables variables1 = (Variables) o;
+        return Objects.equals(variables, variables1.variables);
+    }
+
 }

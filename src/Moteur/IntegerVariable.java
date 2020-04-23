@@ -1,12 +1,15 @@
 package Moteur;
 
-import java.util.ArrayList;
-
 public class IntegerVariable extends Variable {
-    //bool isEntier
+
     public IntegerVariable(String name) {
         super(name);
+        isInteger = true ;
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        Variable variable = (Variable)o ;
+        return isInteger== variable.isInteger() ;
+    }
 }

@@ -6,17 +6,15 @@ import java.util.Objects;
 //n'extends pas
 public abstract class Variable{
     protected String name ;
+    protected boolean isInteger ;
+    protected boolean isReal ;
+
     //regarder super methode pour name, et equals type sdans entier ou reel
     public Variable(String name) {
         this.name = name;
+        this.isInteger = false ;
+        this.isReal = false ;
     }
-
-
-    public double toDouble(){
-        return Double.valueOf(name) ;
-    }
-
-
 
     @Override
     public String toString() {
@@ -32,10 +30,15 @@ public abstract class Variable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Variable variable = (Variable) o;
-        return Objects.equals(name, variable.name);
+        return Objects.equals(name, variable.name) ;
     }
 
+    public boolean isInteger() {
+        return isInteger;
+    }
 
-
-    //equals meme nom et meme type reel ou entier
+    public boolean isReal() {
+        return isReal;
+    }
+//equals meme nom et meme type reel ou entier
 }

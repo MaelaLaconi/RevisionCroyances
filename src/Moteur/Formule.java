@@ -1,33 +1,30 @@
 package Moteur;
 
-import java.util.ArrayList;
-
 public abstract class Formule {
-    protected Formule formuleUnaire ;
+    protected Formule child;
     protected Coefficients coefficients ;
-    protected double valeur ;
-    protected Formule formuleUnaire2 ;
-    protected String nom ;
+    protected double rightMember;
+    protected Formule child2;
+    protected String name;
 
-    public Formule(Formule formuleUnaire) {
-        this.formuleUnaire = formuleUnaire;
+    public Formule(Formule child) {
+        this.child = child;
     }
 
-    public Formule(Formule formuleUnaire, Formule formuleUnaire2) {
-        this.formuleUnaire = formuleUnaire;
-        this.formuleUnaire2 = formuleUnaire2 ;
+    public Formule(Formule child, Formule child2) {
+        this.child = child;
+        this.child2 = child2;
     }
 
-    public Formule(Coefficients coefficients, double valeur) {
+    public Formule(Coefficients coefficients, double rightMember) {
         this.coefficients = coefficients;
-        this.valeur = valeur ;
+        this.rightMember = rightMember;
     }
 
-    public Formule(String nom) {
-        this.nom = nom ;
+    public Formule(String name) {
+        this.name = name;
     }
 
-   // public abstract Formule toDNF();
 
     /**
      * NegativeNormalForm
@@ -39,11 +36,8 @@ public abstract class Formule {
         return this ;
     }
 
-    public Formule toDNF(){
-        return this ;
-    }
+    public abstract Formule toDNF() ;
     public abstract boolean estSatisfaitePar(Interpretation inter, Variables variables) ;
-
     public boolean isContrainte(){return false;}
     public boolean isOu(){return false;}
     public boolean isEt(){return false;}
@@ -53,12 +47,11 @@ public abstract class Formule {
         return false ;
     }
 
-    public Formule getOper1() {
-        return formuleUnaire;
+    public Formule getLeftChild() {
+        return child;
     }
-
-    public Formule getOper2() {
-        return formuleUnaire2;
+    public Formule getRightChild() {
+        return child2;
     }
 
 
