@@ -2,7 +2,7 @@ package Moteur;
 
 import java.util.Objects;
 
-public abstract class FormuleArite0 extends Formule {
+public abstract class FormuleArite0 extends Formula {
     protected Coefficients coefficients ;
     protected double rightMember;
     protected String name;

@@ -1,7 +1,5 @@
 import Moteur.*;
 
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -28,7 +26,7 @@ public class Main {
         Or or = new Or(and,c1) ;
         System.out.println(or);
 
-        Formule phi = new Not(or) ;
+        Formula phi = new Not(or) ;
         System.out.println(phi);
 
 

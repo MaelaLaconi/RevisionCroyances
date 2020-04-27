@@ -1,18 +1,18 @@
 package Moteur;
 
 
-public class And extends FormuleBinaire {
-    public And(Formule leftChild, Formule rightChild) {
+public class And extends BinaryFormula {
+    public And(Formula leftChild, Formula rightChild) {
         super(leftChild, rightChild);
     }
 
     @Override
-    public Formule toNNF() {
+    public Formula toNNF() {
         return new And(leftChild.toNNF(), rightChild.toNNF());
     }
 
     @Override
-    public Formule toSousNNF() {
+    public Formula toSousNNF() {
         return new Or(new Not(leftChild).toNNF(), new Not(rightChild).toNNF());
     }
 
@@ -35,25 +35,32 @@ public class And extends FormuleBinaire {
     }
 
     @Override
-    public Formule toDNF() {
-        if (leftChild.isContrainte() && rightChild.isContrainte()) {
+    public Formula toDNF() {
+        //a, b, c, d : constraints
+        //type a and b
+        if (leftChild.isConstraint() && rightChild.isConstraint()) {
             return this;
         }
-        if (leftChild.isContrainte() && rightChild.isOu()) {
+
+        //type a and (b or c)
+        if (leftChild.isConstraint() && rightChild.isOr()) {
             return new Or(new And(leftChild, rightChild.getLeftChild()), new And(leftChild, rightChild.getRightChild()));
         }
 
-        if (rightChild.isContrainte() && leftChild.isOu()) {
+        //type (a or b) and c
+        if (rightChild.isConstraint() && leftChild.isOr()) {
             return new Or(new And(leftChild.getLeftChild(), rightChild), new And(leftChild.getRightChild(), rightChild));
         }
 
-        if(leftChild.isOu() && rightChild.isOu()){
+        //type (a or b) and (c or d)
+        if(leftChild.isOr() && rightChild.isOr()){
             And and1 = new And(leftChild.getLeftChild(), rightChild.getLeftChild()) ;
             And and2 = new And(leftChild.getLeftChild(), rightChild.getRightChild()) ;
             And and3 = new And(leftChild.getRightChild(), rightChild.getLeftChild()) ;
             And and4 = new And(leftChild.getRightChild(), rightChild.getRightChild()) ;
             return new Or(new Or(and1.toDNF(), and2.toDNF()), new Or(and3.toDNF(), and4.toDNF())) ;
         }
+
         return new And(leftChild.toDNF(), rightChild.toDNF()) ;
     }
 

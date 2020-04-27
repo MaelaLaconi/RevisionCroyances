@@ -1,7 +1,5 @@
 package Moteur;
 
-import java.util.ArrayList;
-
 //real variable
 public class RealVariable extends Variable {
 
@@ -11,6 +9,11 @@ public class RealVariable extends Variable {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        Variable variable = (Variable)o ;
+        return isReal == variable.isReal() ;
+    }
 
 //just equals avec les types
 }

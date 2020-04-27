@@ -1,9 +1,6 @@
 package Moteur;
-
-
 import java.util.Objects;
 
-//n'extends pas
 public abstract class Variable{
     protected String name ;
     protected boolean isInteger ;
@@ -16,15 +13,29 @@ public abstract class Variable{
         this.isReal = false ;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return true if type IntegerVariable
+     */
+    public boolean isInteger() {
+        return isInteger;
+    }
+
+    /**
+     *
+     * @return true if type RealVariable
+     */
+    public boolean isReal() {
+        return isReal;
+    }
+
+    //equals meme nom et meme type reel ou entier
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,12 +44,8 @@ public abstract class Variable{
         return Objects.equals(name, variable.name) ;
     }
 
-    public boolean isInteger() {
-        return isInteger;
+    @Override
+    public String toString() {
+        return name;
     }
-
-    public boolean isReal() {
-        return isReal;
-    }
-//equals meme nom et meme type reel ou entier
 }

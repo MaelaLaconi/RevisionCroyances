@@ -1,13 +1,13 @@
 package Moteur;
 
-public class Not extends FormuleUnaire {
-    public Not(Formule oper) {
+public class Not extends UnaryFormula {
+    public Not(Formula oper) {
         super(oper);
     }
 
     @Override
-    public Formule toNNF() {
-        if (child.isContrainte()) {
+    public Formula toNNF() {
+        if (child.isConstraint()) {
             return this;
         } else {
             return child.toSousNNF();
@@ -16,22 +16,13 @@ public class Not extends FormuleUnaire {
 
     @Override
     public boolean estContrainteNon() {
-        return child.isContrainte();
+        return child.isConstraint();
     }
 
     @Override
     public Variables getVariables() {
         return child.getVariables();
     }
-  /*  @Override
-    public Formule toDNF() {
-        return oper.toDNF();
-    }*/
-
-   /* @Override
-    public boolean estSatisfaitePar(ArrayList<Variable> listX) {
-        return !oper.estSatisfaitePar(listX);
-    }*/
 
     @Override
     public String toString() {
@@ -43,7 +34,7 @@ public class Not extends FormuleUnaire {
         return true;
     }
 
-    public Formule toDNF() {
+    public Formula toDNF() {
         return this;
     }
 
@@ -54,11 +45,11 @@ public class Not extends FormuleUnaire {
 
 
     /**
-     * cas ou on a non d'une contrainte
-     * @return
+     *
+     * @return true if not(constraint), false if not
      */
     @Override
-    public boolean isContrainte(){
-        return this.child.isContrainte();
+    public boolean isConstraint(){
+        return this.child.isConstraint();
     }
 }

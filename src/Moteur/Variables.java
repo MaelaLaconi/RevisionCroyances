@@ -29,6 +29,8 @@ public class Variables implements Iterable {
         return var ;
     }
 
+
+    //utiliser equals ?
     public boolean contains(Variable var){
         return variables.contains(var) ;
     }

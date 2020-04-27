@@ -1,12 +1,12 @@
 package Moteur;
 
 public class Constraint extends FormuleArite0{
-    public Constraint(Coefficients coefficients, double valeur) {
-        super(coefficients, valeur);
+    public Constraint(Coefficients coefficients, double rightMember) {
+        super(coefficients, rightMember);
     }
 
     @Override
-    public Formule toNNF() {
+    public Formula toNNF() {
         return this;
     }
 
@@ -20,12 +20,8 @@ public class Constraint extends FormuleArite0{
         return (res <= rightMember) ;
     }
 
-
-
-
-
     @Override
-    public boolean isContrainte() {
+    public boolean isConstraint() {
         return true;
     }
 
@@ -35,7 +31,7 @@ public class Constraint extends FormuleArite0{
     }
 
     @Override
-    public Formule toDNF() {
+    public Formula toDNF() {
         return this ;
     }
 

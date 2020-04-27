@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class VariableValueTable {
     protected HashMap<Variable, Double> tab ;
+
     public VariableValueTable() {
         tab = new HashMap<>() ;
     }
@@ -13,7 +14,7 @@ public class VariableValueTable {
         tab.put(key, value) ;
     }
 
-    public boolean satisfait(Formule formule){
+    public boolean satisfait(Formula formula){
         return false ;
     }
 

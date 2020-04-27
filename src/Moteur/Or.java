@@ -1,22 +1,22 @@
 package Moteur;
 
-public class Or extends FormuleBinaire {
-    public Or(Formule oper1, Formule oper2) {
+public class Or extends BinaryFormula {
+    public Or(Formula oper1, Formula oper2) {
         super(oper1, oper2);
     }
 
     @Override
-    public Formule toNNF() {
+    public Formula toNNF() {
         return new Or(leftChild.toNNF(), rightChild.toNNF());
     }
 
     @Override
-    public Formule toSousNNF() {
+    public Formula toSousNNF() {
         return new And(new Not(leftChild).toNNF(), new Not(rightChild).toNNF());
     }
 
     @Override
-    public boolean isOu(){
+    public boolean isOr(){
         return true ;
     }
 
@@ -25,7 +25,7 @@ public class Or extends FormuleBinaire {
         return "("+ leftChild +" ∨ "+ rightChild +")";
     }
 
-    public Formule toDNF() {
+    public Formula toDNF() {
         return new Or(leftChild.toDNF(), rightChild.toDNF()) ;
     }
 
