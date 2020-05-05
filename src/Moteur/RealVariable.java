@@ -12,7 +12,7 @@ public class RealVariable extends Variable {
     @Override
     public boolean equals(Object o) {
         Variable variable = (Variable)o ;
-        return isReal == variable.isReal() ;
+        return isReal == variable.isReal() && super.equals(o);
     }
 
 //just equals avec les types

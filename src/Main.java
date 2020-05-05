@@ -136,6 +136,9 @@ public class Main {
         System.out.println(or.toNNF());
         phi = or.toNNF();
         System.out.println(phi.toDNF());
+        phi = phi.toDNF() ;
+        System.out.println("phi = "+phi +"\n"+interp.satisfait(phi));
+
 /*
         and = new And(not, c1) ;
         System.out.println(and);

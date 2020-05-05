@@ -3,13 +3,11 @@ import java.util.Objects;
 
 public abstract class Variable{
     protected String name ;
-    protected boolean isInteger ;
     protected boolean isReal ;
 
     //regarder super methode pour name, et equals type sdans entier ou reel
     public Variable(String name) {
         this.name = name;
-        this.isInteger = false ;
         this.isReal = false ;
     }
 
@@ -19,29 +17,26 @@ public abstract class Variable{
         return name;
     }
 
-    /**
-     *
-     * @return true if type IntegerVariable
-     */
-    public boolean isInteger() {
-        return isInteger;
-    }
+
 
     /**
      *
-     * @return true if type RealVariable
+     * @return true if type RealVariable, false if type IntegerVariable
      */
     public boolean isReal() {
         return isReal;
     }
 
-    //equals meme nom et meme type reel ou entier
+    /**
+     *
+     * @param o Variable
+     * @return true if both names are equals
+     */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+
         Variable variable = (Variable) o;
-        return Objects.equals(name, variable.name) ;
+        return name.equals(variable.getName()) ;
     }
 
     @Override

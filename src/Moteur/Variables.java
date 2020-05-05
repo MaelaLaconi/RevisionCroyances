@@ -32,7 +32,14 @@ public class Variables implements Iterable {
 
     //utiliser equals ?
     public boolean contains(Variable var){
-        return variables.contains(var) ;
+        boolean res = false ;
+        for (Variable variable : this.variables){
+            if (var.equals(variable)){
+                res = true ;
+            }
+        }
+
+        return res ;
     }
 
     @Override
