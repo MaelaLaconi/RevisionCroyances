@@ -1,5 +1,4 @@
 package Moteur;
-import java.util.Objects;
 
 public abstract class Variable{
     protected String name ;

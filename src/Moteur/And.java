@@ -65,8 +65,8 @@ public class And extends BinaryFormula {
     }
 
     @Override
-    public boolean estSatisfaitePar(Interpretation inter, Variables variables) {
-        return (leftChild.estSatisfaitePar(inter, variables) && rightChild.estSatisfaitePar(inter, variables));
+    public boolean isSatisfiedBy(Interpretation inter, Variables variables) {
+        return (leftChild.isSatisfiedBy(inter, variables) && rightChild.isSatisfiedBy(inter, variables));
     }
 
 

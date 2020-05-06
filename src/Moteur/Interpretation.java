@@ -4,7 +4,7 @@ public class Interpretation extends VariableValueTable {
     public Interpretation() {
     }
 
-    public boolean satisfait(Formula formula){
-        return formula.estSatisfaitePar(this, formula.getVariables()) ;
+    public boolean satisfies(Formula formula){
+        return formula.isSatisfiedBy(this, formula.getVariables()) ;
     }
 }

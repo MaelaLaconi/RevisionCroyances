@@ -39,8 +39,8 @@ public class Not extends UnaryFormula {
     }
 
     @Override
-    public boolean estSatisfaitePar(Interpretation inter, Variables variables) {
-        return !child.estSatisfaitePar(inter, variables);
+    public boolean isSatisfiedBy(Interpretation inter, Variables variables) {
+        return !child.isSatisfiedBy(inter, variables);
     }
 
 

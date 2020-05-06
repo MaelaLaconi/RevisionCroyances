@@ -6,8 +6,8 @@ public class Main {
         Variable r = new RealVariable("r") ;
         Variable e = new IntegerVariable("e") ;
         Coefficients coefficients = new Coefficients() ;
-        coefficients.put(r, 7.);
-        coefficients.put(e, 2.);
+        coefficients.put(r, new RationalNumber(7.));
+        coefficients.put(e, new RationalNumber(2.));
 
         Constraint c1 = new Constraint(coefficients, 6) ;
         Constraint c2 = new Constraint(coefficients, 10) ;
@@ -34,29 +34,29 @@ public class Main {
        // r = new RealVariable("x1") ;
        // e = new Entier("1") ;
         Interpretation interp = new Interpretation() ;
-        interp.put(r, 1.);
-        interp.put(e, 0.);
-        System.out.println("c1 = "+c1 +"\n"+interp.satisfait(c1));
+        interp.put(r, new RationalNumber(1.));
+        interp.put(e, new RationalNumber(0.));
+        System.out.println("c1 = "+c1 +"\n"+interp.satisfies(c1));
 
         and = new And(c1, c1) ;
         System.out.println("************************************");
         System.out.println(and);
-        System.out.println(interp.satisfait(and));
+        System.out.println(interp.satisfies(and));
 
         not = new Not(and) ;
         System.out.println("************************************");
         System.out.println(not);
-        System.out.println(interp.satisfait(not));
+        System.out.println(interp.satisfies(not));
 
         Not not1 = new Not(not) ;
         System.out.println("************************************");
         System.out.println(not1);
-        System.out.println(interp.satisfait(not1));
+        System.out.println(interp.satisfies(not1));
 
         and = new And(c1, c2) ;
         System.out.println("************************************");
         System.out.println(and);
-        System.out.println(interp.satisfait(and));
+        System.out.println(interp.satisfies(and));
 
         System.out.println("DNF************************************");
         System.out.println(and);
@@ -137,7 +137,8 @@ public class Main {
         phi = or.toNNF();
         System.out.println(phi.toDNF());
         phi = phi.toDNF() ;
-        System.out.println("phi = "+phi +"\n"+interp.satisfait(phi));
+        System.out.println("phi = "+phi +"\n"+interp.satisfies(phi));
+        coefficients.put(e, new RationalNumber(9.));
 
 /*
         and = new And(not, c1) ;

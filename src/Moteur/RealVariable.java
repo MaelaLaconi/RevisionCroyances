@@ -15,5 +15,4 @@ public class RealVariable extends Variable {
         return isReal == variable.isReal() && super.equals(o);
     }
 
-//just equals avec les types
 }

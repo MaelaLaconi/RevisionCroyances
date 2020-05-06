@@ -3,18 +3,27 @@ package Moteur;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VariableValueTable {
-    protected HashMap<Variable, Double> tab ;
+public abstract class VariableValueTable {
+    protected HashMap<Variable, RationalNumber> tab ;  //pas mettre double, encapsuler en rationalNumber (+ et * donne aussi rationalNumber)
+    //definir plus(rn) -> rn, toString, mult, leq dans
+
+    //definir operation de base utilise par lpsolve
 
     public VariableValueTable() {
         tab = new HashMap<>() ;
     }
 
-    public void put(Variable key, Double value) {
+
+    /**
+     * add key and value to the hashmap
+     * @param key Variable
+     * @param value RationalNumber
+     */
+    public void put(Variable key, RationalNumber value) {
         tab.put(key, value) ;
     }
 
-    public boolean satisfait(Formula formula){
+    public boolean satisfies(Formula formula){
         return false ;
     }
 
@@ -32,7 +41,7 @@ public class VariableValueTable {
         return str ;
     }
 
-    public Double get(Variable var){
+    public RationalNumber get(Variable var){
         return tab.get(var) ;
     }
 }

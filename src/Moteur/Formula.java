@@ -54,7 +54,7 @@ public abstract class Formula {
      * @param variables
      * @return true if phi is satisfy by inter, false if not
      */
-    public abstract boolean estSatisfaitePar(Interpretation inter, Variables variables) ;
+    public abstract boolean isSatisfiedBy(Interpretation inter, Variables variables) ;
 
     /**
      *

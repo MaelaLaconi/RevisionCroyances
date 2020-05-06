@@ -1,6 +1,6 @@
 package Moteur;
 
-public class Constraint extends FormuleArite0{
+public class Constraint extends NullArityFormula {
     public Constraint(Coefficients coefficients, double rightMember) {
         super(coefficients, rightMember);
     }
@@ -11,13 +11,14 @@ public class Constraint extends FormuleArite0{
     }
 
     @Override
-    public boolean estSatisfaitePar(Interpretation inter, Variables variables) {
-        double res = 0 ;
+    public boolean isSatisfiedBy(Interpretation inter, Variables variables) {
+        RationalNumber rationalNumber = new RationalNumber(0.);
         for(Object v : variables){
             Variable var = (Variable)v ;
-            res += inter.get(var) * coefficients.get(var) ;
+            rationalNumber = rationalNumber.plus(inter.get(var).mult(coefficients.get(var))) ;
+
         }
-        return (res <= rightMember) ;
+        return (rationalNumber.leq(rightMember)) ;
     }
 
     @Override
