@@ -36,7 +36,8 @@ public class And extends BinaryFormula {
 
     @Override
     public Formula toDNF() {
-        //a, b, c, d : constraints
+        //a, b, c, d : formula
+
         //type a and b
         if (leftChild.isConstraint() && rightChild.isConstraint()) {
             return this;
@@ -44,12 +45,12 @@ public class And extends BinaryFormula {
 
         //type a and (b or c)
         if (leftChild.isConstraint() && rightChild.isOr()) {
-            return new Or(new And(leftChild, rightChild.getLeftChild()), new And(leftChild, rightChild.getRightChild()));
+            return new Or(new And(leftChild, rightChild.getLeftChild().toDNF()), new And(leftChild, rightChild.getRightChild().toDNF()));
         }
 
         //type (a or b) and c
         if (rightChild.isConstraint() && leftChild.isOr()) {
-            return new Or(new And(leftChild.getLeftChild(), rightChild), new And(leftChild.getRightChild(), rightChild));
+            return new Or(new And(leftChild.getLeftChild().toDNF(), rightChild), new And(leftChild.getRightChild().toDNF(), rightChild));
         }
 
         //type (a or b) and (c or d)

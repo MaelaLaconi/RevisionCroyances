@@ -5,7 +5,6 @@ import java.util.Objects;
 public abstract class NullArityFormula extends Formula {
     protected Coefficients coefficients ;
     protected double rightMember;
-    protected String name;
 
 
     public NullArityFormula(Coefficients coefficients, double rightMember) {
@@ -14,10 +13,7 @@ public abstract class NullArityFormula extends Formula {
         this.rightMember = rightMember;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -25,7 +21,6 @@ public abstract class NullArityFormula extends Formula {
         if (o == null || getClass() != o.getClass()) return false;
         NullArityFormula that = (NullArityFormula) o;
         return Double.compare(that.rightMember, rightMember) == 0 &&
-                Objects.equals(coefficients, that.coefficients) &&
-                Objects.equals(name, that.name);
+                Objects.equals(coefficients, that.coefficients) ;
     }
 }

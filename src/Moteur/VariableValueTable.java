@@ -2,6 +2,7 @@ package Moteur;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public abstract class VariableValueTable {
     protected HashMap<Variable, RationalNumber> tab ;  //pas mettre double, encapsuler en rationalNumber (+ et * donne aussi rationalNumber)
@@ -27,6 +28,11 @@ public abstract class VariableValueTable {
         return false ;
     }
 
+    public RationalNumber get(Variable var){
+        return tab.get(var) ;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder() ;
@@ -41,7 +47,13 @@ public abstract class VariableValueTable {
         return str ;
     }
 
-    public RationalNumber get(Variable var){
-        return tab.get(var) ;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VariableValueTable that = (VariableValueTable) o;
+        return Objects.equals(tab, that.tab);
     }
+
 }
