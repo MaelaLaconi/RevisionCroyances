@@ -11,7 +11,7 @@ public class Or extends BinaryFormula {
     }
 
     @Override
-    public Formula toSousNNF() {
+    public Formula toSubNNF() {
         return new And(new Not(leftChild).toNNF(), new Not(rightChild).toNNF());
     }
 

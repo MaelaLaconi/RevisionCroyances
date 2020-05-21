@@ -10,7 +10,7 @@ public class Not extends UnaryFormula {
         if (child.isConstraint()) {
             return this;
         } else {
-            return child.toSousNNF();
+            return child.toSubNNF();
         }
     }
 

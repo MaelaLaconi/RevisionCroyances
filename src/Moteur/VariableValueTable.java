@@ -5,10 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public abstract class VariableValueTable {
-    protected HashMap<Variable, RationalNumber> tab ;  //pas mettre double, encapsuler en rationalNumber (+ et * donne aussi rationalNumber)
-    //definir plus(rn) -> rn, toString, mult, leq dans
-
-    //definir operation de base utilise par lpsolve
+    protected HashMap<Variable, RationalNumber> tab ;
 
     public VariableValueTable() {
         tab = new HashMap<>() ;

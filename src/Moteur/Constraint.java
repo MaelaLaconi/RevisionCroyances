@@ -1,7 +1,7 @@
 package Moteur;
 
 public class Constraint extends NullArityFormula {
-    public Constraint(Coefficients coefficients, double rightMember) {
+    public Constraint(Coefficients coefficients, RationalNumber rightMember) {
         super(coefficients, rightMember);
     }
 

@@ -9,10 +9,10 @@ public class Main {
         coefficients.put(r, new RationalNumber(7.));
         coefficients.put(e, new RationalNumber(2.));
 
-        Constraint c1 = new Constraint(coefficients, 6) ;
-        Constraint c2 = new Constraint(coefficients, 10) ;
-        Constraint c3 = new Constraint(coefficients, 15) ;
-        Constraint c4 = new Constraint(coefficients, 17) ;
+        Constraint c1 = new Constraint(coefficients, new RationalNumber(6.)) ;
+        Constraint c2 = new Constraint(coefficients,  new RationalNumber(10.)) ;
+        Constraint c3 = new Constraint(coefficients,  new RationalNumber(15.)) ;
+        Constraint c4 = new Constraint(coefficients,  new RationalNumber(17.)) ;
 
         System.out.println(c1);
 

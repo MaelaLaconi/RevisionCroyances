@@ -4,7 +4,6 @@ public abstract class Variable{
     protected String name ;
     protected boolean isReal ;
 
-    //regarder super methode pour name, et equals type sdans entier ou reel
     public Variable(String name) {
         this.name = name;
         this.isReal = false ;

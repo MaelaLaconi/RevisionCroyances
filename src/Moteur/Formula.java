@@ -3,7 +3,7 @@ package Moteur;
 public abstract class Formula {
     protected Formula child;
     protected Coefficients coefficients ;
-    protected double rightMember;
+    protected RationalNumber rightMember;
     protected Formula child2;
 
     public Formula(Formula child) {
@@ -25,7 +25,7 @@ public abstract class Formula {
      * @param coefficients
      * @param rightMember
      */
-    public Formula(Coefficients coefficients, double rightMember) {
+    public Formula(Coefficients coefficients, RationalNumber rightMember) {
         this.coefficients = coefficients;
         this.rightMember = rightMember;
     }
@@ -38,7 +38,11 @@ public abstract class Formula {
      */
     public abstract Formula toNNF() ;
 
-    public Formula toSousNNF(){
+    /**
+     * called when we want to apply toNNF to a sub formula
+     * @return this (default value)
+     */
+    public Formula toSubNNF(){
         return this ;
     }
 

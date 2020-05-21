@@ -21,8 +21,8 @@ public class RationalNumber {
      * @param
      * @return
      */
-    public boolean leq(Double d){
-        return this.value<=d ;
+    public boolean leq(RationalNumber d){
+        return this.value<=d.getValue() ;
     }
 
     public Double getValue() {
