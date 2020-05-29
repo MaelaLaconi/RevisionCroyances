@@ -18,8 +18,8 @@ Those classes which represent PCLC formalism are integrate in the project as the
 #####To work on project ##############
 Read the two ReadMe files in the read me directory.
 
-It is explain how to install and work on the porject on Eclipse IDE.
-However we both work on IntelliJ IDE , there is less maven plugin problems.
+It is explain how to install and work on the project on Eclipse IDE.
+However we both worked on IntelliJ IDE , there is less maven plugin problems.
 Here is the way to work on the project on intelliji IDE 
 
 Install maven as explain in the readMe , you will also need javacup and jflex librairie.
